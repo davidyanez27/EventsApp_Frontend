@@ -1,0 +1,36 @@
+<div class="flex flex-column p-2">
+
+  <h3>Eventos disponibles</h3>
+
+  <mat-form-field>
+    <mat-label>Ingrese el nombre del evento</mat-label>
+    <input
+      type="text"
+      matInput
+      [formControl]="searchInput"
+      (input)="searchEvent()"
+      [matAutocomplete]="auto"
+    />
+
+    <mat-autocomplete autoActiveFirstOption
+      #auto="matAutocomplete"
+      (optionSelected)="onSelectedOption( $event )"
+      >
+      <mat-option *ngFor="let event of events" [value]="event">
+        {{ event.eventName}}
+      </mat-option>
+
+      <mat-option
+        *ngIf="events.length === 0 && searchInput.value && searchInput.value.length > 0"
+        value="">
+        No se encontró nada con el término {{ searchInput.value }}
+      </mat-option>
+    </mat-autocomplete>
+
+  </mat-form-field>
+
+
+  {{ selectedEvent | json }}
+
+
+</div>

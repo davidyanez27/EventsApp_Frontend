@@ -1,0 +1,38 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>{{ event.eventName }}</mat-card-title>
+    <mat-card-subtitle>{{ event.location }}</mat-card-subtitle>
+  </mat-card-header>
+
+  <!-- TODO: imagen -->
+  <!-- <img mat-card-image [src]="event" [alt]="event"> -->
+
+  <mat-card-content class="mt-2">
+    <h4>{{ event.description }}</h4>
+
+  </mat-card-content>
+
+  <mat-divider></mat-divider>
+
+  <mat-card-actions>
+
+    <button mat-button
+      mat-raised
+      color="primary"
+      [routerLink]="['/events/edit', event.eventId ]">
+      <mat-icon>edit</mat-icon>
+      Editar
+    </button>
+
+    <span class="spacer"></span>
+
+    <button mat-button
+      mat-raised
+      [routerLink]="['/events', event.eventId]">
+      <mat-icon>more_horiz</mat-icon>
+      Más
+    </button>
+
+  </mat-card-actions>
+
+</mat-card>
